@@ -1,0 +1,24 @@
+{
+    "name": "Sensor Fusion Dev Container (noble)",
+    "image": "sensor-fusion-python-noble-dev",
+
+    "initializeCommand": "./tools/docker/build_image.sh",
+
+    // We do NOT need to set "remoteUser" if the Dockerfile's default user is already correct
+    // but you can if you want to be explicit. Also "updateRemoteUserUID" can be false, since
+    // our Dockerfile already set the user to our exact UID/GID.
+    "updateRemoteUserUID": false,
+
+    // You can still keep your postStartCommand
+    "postStartCommand": "bash", 
+
+    "runArgs": [
+        "--rm",
+        "--name", "sensor-fusion-python-noble-devcontainer",
+        "--hostname", "sensor-fusion-devcontainer",
+        "--env", "DISPLAY=${localEnv:DISPLAY}",  
+        "--volume", "/tmp/.X11-unix:/tmp/.X11-unix",        
+        // "--volume", "/usr/share/vulkan/icd.d/nvidia_icd.json:/usr/share/vulkan/icd.d/nvidia_icd.json", 
+        "--gpus", "all"
+      ]
+}
