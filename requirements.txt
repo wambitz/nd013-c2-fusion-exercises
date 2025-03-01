@@ -1,8 +1,9 @@
 numpy
 opencv-python
-protobuf
+protobuf==3.19.0
 easydict
-pytorch
+# pytorch -> it's torch not pytorch
+torch
 pillow
 matplotlib
 wxpython
