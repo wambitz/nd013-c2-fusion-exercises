@@ -72,7 +72,8 @@ WORKDIR /workspaces
 # Install requirements
 # ------------------------------------------------------------------------------
 COPY requirements.txt /tmp/requirements.txt
-RUN pip3 install -r /tmp/requirements.txt
+RUN pip3 install --break-system-packages -r /tmp/requirements.txt
+RUN rm /tmp/requirements.txt
 
 # ------------------------------------------------------------------------------
 # Entry point
