@@ -41,6 +41,7 @@ RUN apt-get update && apt-get install -y \
     build-essential \
     sudo \
     && rm -rf /var/lib/apt/lists/*
+    # (optional) wget for xwPython and remove libgtk-3-dev
 
 # ------------------------------------------------------------------------------
 # Optionally add passwordless sudo for $USERNAME
@@ -59,11 +60,6 @@ RUN mkdir -p /workspaces && \
     chown -R $USERNAME:$USERNAME /workspaces
 
 # ------------------------------------------------------------------------------
-# Switch to "$USERNAME" by default
-# ------------------------------------------------------------------------------
-USER $USERNAME
-
-# ------------------------------------------------------------------------------
 # Set repo working directory
 # ------------------------------------------------------------------------------
 WORKDIR /workspaces
@@ -71,9 +67,19 @@ WORKDIR /workspaces
 # ------------------------------------------------------------------------------
 # Install requirements
 # ------------------------------------------------------------------------------
+# NOTE: uncomment this if you don't want to use libgtk-3-dev 
+# RUN wget -P /tmp https://extras.wxpython.org/wxPython4/extras/linux/gtk3/ubuntu-24.04/wxPython-4.2.2-cp312-cp312-linux_x86_64.whl
+# RUN pip3 install --break-system-packages /tmp/wxPython-4.2.2-cp312-cp312-linux_x86_64.whl
+# RUN rm /tmp/wxPython-4.2.2-cp312-cp312-linux_x86_64.whl
+
 COPY requirements.txt /tmp/requirements.txt
 RUN pip3 install --break-system-packages -r /tmp/requirements.txt
 RUN rm /tmp/requirements.txt
+
+# ------------------------------------------------------------------------------
+# Switch to "$USERNAME" by default
+# ------------------------------------------------------------------------------
+USER $USERNAME
 
 # ------------------------------------------------------------------------------
 # Entry point
