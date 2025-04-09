@@ -34,9 +34,9 @@ The sequences listed above can be found in the folder "training". Please downloa
 
 ### wxPython
 
-I you cannot install `wxPython` from a vitual environment and get an error you have the following options
+I you cannot install `wxPython` from a vitual environment and get an error you have the following options:
 
-1. **Install `libgtk-3-dev`**
+**1. Install `libgtk-3-dev` on your system**
 
    ```bash
    sudo apt install libgtk-3-dev
@@ -54,7 +54,7 @@ I you cannot install `wxPython` from a vitual environment and get an error you h
    pip install -r requirement.txt
    ```
 
-2. **Use a docker container or a `devcontainer`**:
+**2. Use a docker container or a `devcontainer`**:
    
    Place the following in a Dockerfile:
 
@@ -82,7 +82,7 @@ I you cannot install `wxPython` from a vitual environment and get an error you h
    pip install -r requirement.txt
    ```
 
-3. **Install mini-conda**
+**3. Install mini-conda**
 
    Download the installer:
 
@@ -156,6 +156,28 @@ I you cannot install `wxPython` from a vitual environment and get an error you h
    ```bash
    conda install -c conda-forge wxpython
    ```
+
+**4. Download binary and install from terminal**:
+
+   [Index of /Phoenix/snapshot-builds](https://wxpython.org/Phoenix/snapshot-builds/) 
+
+   ```bash
+   wget https://extras.wxpython.org/wxPython4/extras/linux/gtk3/ubuntu-24.04/wxPython-4.2.2-cp312-cp312-linux_x86_64.whl
+   ```
+
+   In your virtual env:
+
+   ```bash
+   pip install wxPython-4.2.2-cp312-cp312-linux_x86_64.whl
+   ```
+
+   Alternatively you could build your own wheel in a container and copy to your host, to do this, create a container as mention in "**2. Use a docker container or a `devcontainer`**", after pip install, you can copy the cached wheel and copy it to your host, something like this:
+
+   ```bash
+   docker cp sensor-fusion-python-noble-devcontainer:/home/jcastillo/.cache/pip/wheels/dd/a1/8b/26ce0cf99752ee0fb0492af81af5a3205cb9c66358e70f4882/wxPython-4.2.2-cp312-cp312-linux_x86_64.whl ~/Workspace/Udacity/SelfDrivingCar/
+   ```
+
+
 
 ### protobuf 
 

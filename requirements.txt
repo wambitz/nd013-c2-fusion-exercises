@@ -1,12 +1,11 @@
-numpy
-opencv-python
+numpy==2.2.4
+opencv-python==4.11.0.86
 protobuf==3.19.0
-easydict
-# pytorch -> it's torch not pytorch
-torch
-pillow
-matplotlib
-wxpython
-shapely
-tqdm
-open3d
+easydict==1.13
+torch==2.6.0 # -> it'snot pytorch
+pillow==11.1.0
+matplotlib==3.10.1
+wxpython==4.2.2 # -> not working on ubuntu 24.04 missing libdev-gtk3
+shapely==2.1.0
+tqdm==4.67.1
+open3d==0.19.0

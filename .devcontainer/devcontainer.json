@@ -12,6 +12,14 @@
     // You can still keep your postStartCommand
     "postStartCommand": "bash", 
 
+    "customizations": {
+      "vscode": {
+        "extensions": [
+          "ms-python.python"
+        ]
+      }
+    },
+
     "runArgs": [
         "--rm",
         "--name", "sensor-fusion-python-noble-devcontainer",
